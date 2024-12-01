@@ -8,7 +8,7 @@ def print2DArray(arr):
     for i in range(len(arr)):
         print(" ")
         for j in range(len(arr[0])):
-            print(arr[i][j], end=" ")
+            print(f"{arr[i][j]:.2f}", end=" ")
 
 my_array = np.arange(10, 70, 2)
 print("1:\n")
@@ -23,7 +23,7 @@ print2DArray(A)
 print("\n")
 
 A = 2.5 * A
-A = A - 5
+A[0] = A[0] - 5
 print("3:")
 print2DArray(A)
 print("\n")
@@ -34,7 +34,7 @@ print2DArray(B)
 print("\n")
 
 a = np.sum(A, axis=1)
-b = np.sum(B, axis=1)
+b = np.sum(B, axis=0)
 print("5:\n") 
 print("Размерность a: ", np.size(a)) 
 print(*a)
