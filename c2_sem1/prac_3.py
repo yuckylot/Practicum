@@ -86,22 +86,21 @@ for stat, value in normal_stats.items():
 
 
 print("\n6: ")
-np.random.seed(42)
-uniform_sample = np.random.uniform(1, 101, size=100)
+
+uniform_sample = np.random.randint(1, 101, size=100)
 
 normal_sample = np.random.normal(loc=50, scale=15, size=100)
 normal_sample = np.clip(np.round(normal_sample), 1, 100).astype(int)
-
 
 def chi_square_test(sample):
     observed = Counter(sample)
     observed_freq = [observed.get(i, 0) for i in range(1, 101)]
     
-    expected_freq = [100 / 100] * 100  
+    expected_freq = [100 / 100] * 100
     
+
     chi2_stat, p_value = stats.chisquare(observed_freq, expected_freq)
     return chi2_stat, p_value
-
 uniform_chi2, uniform_p = chi_square_test(uniform_sample)
 normal_chi2, normal_p = chi_square_test(normal_sample)
 
